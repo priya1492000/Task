@@ -51,19 +51,22 @@ def print_outcome_with_frequency(prob_map, num_trials):
     for outcome, freq in sorted(outcome_freq.items()):
         print(f"{outcome}: {freq}")
 
+if __name__ == "__main__":
+    try:
+        # Input 1:
+        prob_map_1 = [{"Head": 35}, {"Tail": 65}]
+        print("Coin probability outcome:")
+        print_outcome_with_frequency(prob_map_1, 1000)
 
-# Input 1:
-prob_map_1 = [{"Head": 35}, {"Tail": 65}]
-print("Coin probability outcome:")
-print_outcome_with_frequency(prob_map_1, 1000)
+        # Input 2:
+        prob_map_2 = [{1, 10}, {2, 30}, {3, 15}, {4, 15}, {5, 30}, {6, 0}]
 
-# Input 2:
-prob_map_2 = [{1, 10}, {2, 30}, {3, 15}, {4, 15}, {5, 30}, {6, 0}]
+        #Convert prob_map_2 to list of dict
+        prob_map_2 = [{k: v} for [k, v] in prob_map_2]
+        prob_map_2.pop()
+        prob_map_2.append({6: 0})
 
-#Convert prob_map_2 to list of dict
-prob_map_2 = [{k: v} for [k, v] in prob_map_2]
-prob_map_2.pop()
-prob_map_2.append({6: 0})
-
-print("Dice probability outcome:")
-print_outcome_with_frequency(prob_map_2, 1000)
+        print("Dice probability outcome:")
+        print_outcome_with_frequency(prob_map_2, 1000)
+    except Exception as e:
+        print("Error: ", e)

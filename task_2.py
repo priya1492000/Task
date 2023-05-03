@@ -43,5 +43,9 @@ def print_output(results):
     for i, result in enumerate(results):
         print(f"{i+1}. {result['expression']} => {result['result']}")
 
-results = evaluate_expressions()
-print_output(results)
+if __name__ == "__main__":
+    try:
+        results = evaluate_expressions()
+        print_output(results)
+    except Exception as e:
+        print("Error: ", e)
